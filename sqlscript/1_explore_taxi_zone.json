@@ -1,6 +1,9 @@
 {
 	"name": "1_explore_taxi_zone",
 	"properties": {
+		"folder": {
+			"name": "nyc_taxi/discovery"
+		},
 		"content": {
 			"query": "-- This is auto-generated code\nSELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n        BULK 'https://melchiadls2bis.dfs.core.windows.net/raw/taxi_zone.csv',\n        FORMAT = 'CSV',\n        PARSER_VERSION = '2.0',\n        HEADER_ROW = TRUE\n    ) AS [result]\n\n    -- This is with abfss\nSELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n        BULK 'abfss://raw@melchiadls2bis.dfs.core.windows.net/taxi_zone.csv',\n        FORMAT = 'CSV',\n        PARSER_VERSION = '2.0',\n        HEADER_ROW = TRUE\n    ) AS [result]\n",
 			"metadata": {
