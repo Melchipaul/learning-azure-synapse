@@ -5,12 +5,12 @@
 			"name": "nyc_taxi/discovery"
 		},
 		"content": {
-			"query": "",
+			"query": "USE nyc_taxi_discovery;\n\n-- Identify any data quality issues in trip total amount",
 			"metadata": {
 				"language": "sql"
 			},
 			"currentConnection": {
-				"databaseName": "master",
+				"databaseName": "nyc_taxi_discovery",
 				"poolName": "Built-in"
 			},
 			"resultLimit": 5000
