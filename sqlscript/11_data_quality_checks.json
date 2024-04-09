@@ -5,7 +5,7 @@
 			"name": "nyc_taxi/discovery"
 		},
 		"content": {
-			"query": "USE nyc_taxi_discovery;\n\n-- Identify any data quality issues in trip total amount",
+			"query": "USE nyc_taxi_discovery;\n\n-- Identify any data quality issues in trip total amount\n\n",
 			"metadata": {
 				"language": "sql"
 			},
