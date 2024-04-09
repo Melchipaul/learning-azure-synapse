@@ -5,7 +5,7 @@
 			"name": "nyc_taxi/discovery"
 		},
 		"content": {
-			"query": "USE nyc_taxi_discovery;\n\n-- Check for duplicates in the Taxi Zone data\n\n",
+			"query": "USE nyc_taxi_discovery;\n\n-- Check for duplicates in the Taxi Zone data\n\nSELECT\n     location_id,\n     COUNT(1) AS number_of_records\nFROM\n    OPENROWSET(\n        BULK 'https://melchiadls2bis.dfs.core.windows.net/raw/taxi_zone.csv',\n        FORMAT = 'CSV',\n        PARSER_VERSION = '2.0',\n        HEADER_ROW = TRUE\n    ) \n    WITH(\n        location_id SMALLINT 1,\n        borough VARCHAR(15) 2,\n        zone VARCHAR(50) 3,\n        service_zone VARCHAR(15) 4\n    ) AS [result]\n    GROUP BY location_id\n    HAVING COUNT(1) > 1\n    ORDER BY number_of_records DESC;\n\n    SELECT\n     borough,\n     COUNT(1) AS number_of_records\nFROM\n    OPENROWSET(\n        BULK 'https://melchiadls2bis.dfs.core.windows.net/raw/taxi_zone.csv',\n        FORMAT = 'CSV',\n        PARSER_VERSION = '2.0',\n        HEADER_ROW = TRUE\n    ) \n    WITH(\n        location_id SMALLINT 1,\n        borough VARCHAR(15) 2,\n        zone VARCHAR(50) 3,\n        service_zone VARCHAR(15) 4\n    ) AS [result]\n    GROUP BY borough\n    HAVING COUNT(1) > 1\n    ORDER BY number_of_records DESC;\n",
 			"metadata": {
 				"language": "sql"
 			},
