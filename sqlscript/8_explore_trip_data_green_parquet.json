@@ -1,6 +1,9 @@
 {
 	"name": "8_explore_trip_data_green_parquet",
 	"properties": {
+		"folder": {
+			"name": "nyc_taxi/discovery"
+		},
 		"content": {
 			"query": "USE nyc_taxi_discovery;\n\n-- This is auto-generated code\nSELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n        BULK 'trip_data_green_parquet/year=2020/month=01/',\n        FORMAT = 'PARQUET',\n        DATA_SOURCE = 'nyc_taxi_data'\n    ) AS [result]\n\n\n-- Identify the interred data types\nEXEC sp_describe_first_result_set N'\nSELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n        BULK ''trip_data_green_parquet/year=2020/month=01/'',\n        FORMAT = ''PARQUET'',\n        DATA_SOURCE = ''nyc_taxi_data''\n    ) AS [result]\n';\n\nSELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n        BULK 'trip_data_green_parquet/year=2020/month=01/',\n        FORMAT = 'PARQUET',\n        DATA_SOURCE = 'nyc_taxi_data'\n    ) \n    WITH (\n        tip_amount FLOAT,\n        trip_type INT\n    )\n    AS [result];",
 			"metadata": {
