@@ -5,7 +5,7 @@
 			"name": "nyc_taxi/ldw"
 		},
 		"content": {
-			"query": "USE nyc_taxi_ldw;\n\n-- Create taxi_zone table\n\nCREATE EXTERNAL TABLE bronze.taxi_zone\n(\n    location_id SMALLINT,\n    borough VARCHAR(15),\n    zone VARCHAR(50),\n    service_zone VARCHAR(15)\n)\nWITH (\n    LOCATION = 'taxi_zone.csv',\n    DATA_SOURCE = nyc_taxi_src,\n    FILE_FORMAT = csv_file_format\n\n);\n\n\nSELECT * FROM bronze.taxi_zone;",
+			"query": "USE nyc_taxi_ldw;\n\n-- Create taxi_zone table\nIF NOT EXISTS(\n    SELECT * FROM sys.external_tables WHERE name = 'taxi_zone')\n    CREATE EXTERNAL TABLE bronze.taxi_zone\n    (\n        location_id SMALLINT,\n        borough VARCHAR(15),\n        zone VARCHAR(50),\n        service_zone VARCHAR(15)\n    )\n    WITH (\n        LOCATION = 'taxi_zone.csv',\n        DATA_SOURCE = nyc_taxi_src,\n        FILE_FORMAT = csv_file_format\n\n    );\n\n\nSELECT * FROM bronze.taxi_zone;",
 			"metadata": {
 				"language": "sql"
 			},
