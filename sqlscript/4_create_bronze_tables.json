@@ -5,12 +5,12 @@
 			"name": "nyc_taxi/ldw"
 		},
 		"content": {
-			"query": "USE nyc_taxi_ldw;\n\n-- Create taxi_zone table\n\nCREATE EXTERNAL TABLE bronze.taxi_zone\n(\n    location_id SMALLINT,\n    borough VARCHAR(15),\n    zone VARCHAR(50),\n    service_zone VARCHAR(15)\n)\nWITH (\n    LOCATION = 'taxi_zone.csv',\n    DATA_SOURCE = 'nyc_taxi_src',\n    FILE_FORMAT = 'csv_file_format',\n\n)",
+			"query": "USE nyc_taxi_ldw;\n\n-- Create taxi_zone table\n\nCREATE EXTERNAL TABLE bronze.taxi_zone\n(\n    location_id SMALLINT,\n    borough VARCHAR(15),\n    zone VARCHAR(50),\n    service_zone VARCHAR(15)\n)\nWITH (\n    LOCATION = 'taxi_zone.csv',\n    DATA_SOURCE = nyc_taxi_src,\n    FILE_FORMAT = csv_file_format\n\n);",
 			"metadata": {
 				"language": "sql"
 			},
 			"currentConnection": {
-				"databaseName": "master",
+				"databaseName": "nyc_taxi_ldw",
 				"poolName": "Built-in"
 			},
 			"resultLimit": 5000
