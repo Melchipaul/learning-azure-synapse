@@ -8,9 +8,6 @@
 		"parameters": {
 			"p_directory_path": {
 				"type": "string"
-			},
-			"p_system_path": {
-				"type": "string"
 			}
 		},
 		"annotations": [],
