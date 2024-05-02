@@ -6,10 +6,10 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"p_folder_path": {
+			"p_directory_path": {
 				"type": "string"
 			},
-			"p_directory_path": {
+			"p_system_path": {
 				"type": "string"
 			}
 		},
@@ -18,9 +18,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "taxi_zone",
-				"fileSystem": {
-					"value": "@dataset().p_folder_path",
+				"folderPath": {
+					"value": "@dataset().p_directory_path",
 					"type": "Expression"
 				}
 			},
