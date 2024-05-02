@@ -73,10 +73,6 @@
 				"type": "String",
 				"defaultValue": "silver/taxi_zone"
 			},
-			"v_file_system": {
-				"type": "String",
-				"defaultValue": "silver"
-			},
 			"v_usp_name": {
 				"type": "String",
 				"defaultValue": "silver.usp_silver_taxi_zone"
