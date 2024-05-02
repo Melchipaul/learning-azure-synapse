@@ -21,7 +21,8 @@
 				"typeProperties": {
 					"scripts": [
 						{
-							"type": "Query"
+							"type": "Query",
+							"text": "USE nyc_taxi_ldw;\nSELECT DISTINCT\n    year,\n    month\nFROM bronze.vw_trip_data_green_csv;"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
