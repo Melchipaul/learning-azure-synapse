@@ -22,10 +22,6 @@
 							"p_directory_path": {
 								"value": "@variables('v_folder_path')",
 								"type": "Expression"
-							},
-							"p_system_path": {
-								"value": "@variables('v_file_system')",
-								"type": "Expression"
 							}
 						}
 					},
