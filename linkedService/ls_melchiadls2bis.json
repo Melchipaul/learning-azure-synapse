@@ -1,0 +1,10 @@
+{
+	"name": "ls_melchiadls2bis",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://melchiadls2bis.dfs.core.windows.net/"
+		}
+	}
+}
