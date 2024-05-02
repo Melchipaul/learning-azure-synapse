@@ -92,7 +92,7 @@
 				"defaultValue": [
 					{
 						"folder_path": "silver/calendar",
-						"usp_name": "Silver.usp_silver_calendar"
+						"usp_name": "silver.usp_silver_calendar"
 					},
 					{
 						"folder_path": "silver/taxi_zone",
