@@ -21,6 +21,10 @@
 				"folderPath": {
 					"value": "@dataset().p_directory_path",
 					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().p_system_path",
+					"type": "Expression"
 				}
 			},
 			"compressionCodec": "snappy"
