@@ -5,6 +5,9 @@
 			"referenceName": "ls_melchiadls2bis",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "demo"
+		},
 		"annotations": [],
 		"type": "Parquet",
 		"typeProperties": {
