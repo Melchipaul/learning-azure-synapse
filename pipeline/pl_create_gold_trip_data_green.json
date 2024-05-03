@@ -22,7 +22,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "USE nyc_taxi_ldw;\nSELECT DISTINCT\n    year,\n    month\nFROM bronze.vw_trip_data_green_csv;"
+							"text": "USE nyc_taxi_ldw;\nSELECT DISTINCT\n    year,\n    month\nFROM silver.vw_trip_data_green_csv;"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
@@ -65,7 +65,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"p_directory_path": {
-											"value": "silver/trip_data_green/year=@{item().year}/month=@{item().month}",
+											"value": "gold/trip_data_green/year=@{item().year}/month=@{item().month}",
 											"type": "Expression"
 										}
 									}
@@ -98,7 +98,7 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"storedProcedureName": "[silver].[usp_silver_trip_data_green]",
+								"storedProcedureName": "[gold].[usp_gold_trip_data_green]",
 								"storedProcedureParameters": {
 									"month": {
 										"value": {
