@@ -1,0 +1,23 @@
+{
+	"name": "ds_silver_taxi_zone",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_melchiadls2bis",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "demo"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "taxi_zone",
+				"fileSystem": "silver"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
