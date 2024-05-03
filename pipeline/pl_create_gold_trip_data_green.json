@@ -125,7 +125,7 @@
 				}
 			},
 			{
-				"name": "Create Silver View",
+				"name": "Create Gold View",
 				"type": "Script",
 				"dependsOn": [
 					{
