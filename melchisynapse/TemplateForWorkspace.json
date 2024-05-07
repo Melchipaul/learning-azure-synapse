@@ -1383,6 +1383,29 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('workspaceName'), '/1_synapse_link_query_heartbeat')]",
+			"type": "Microsoft.Synapse/workspaces/sqlscripts",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"folder": {
+					"name": "nyc_taxi/synapse_link"
+				},
+				"content": {
+					"query": "IF (NOT EXISTS(SELECT * FROM sys.credentials WHERE name = 'melchi-cosmosdb'))\n    CREATE CREDENTIAL [melchi-cosmosdb]\n    -- WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = '4NdNnrRvS9W9SHT4UVVgPEwjm8nIYKFSA5kSdbgckr221y3m8Z2vy51UfCyjM9lZE353iKW27FKsACDbGTJRsQ=='\nGO\n\nSELECT TOP 100 *\nFROM OPENROWSET(​PROVIDER = 'CosmosDB',\n                CONNECTION = 'Account=melchi-cosmosdb;Database=nyctxidb',\n                OBJECT = 'Heartbeat',\n                SERVER_CREDENTIAL = 'melchi-cosmosdb'\n) AS [Heartbeat]\n",
+					"metadata": {
+						"language": "sql"
+					},
+					"currentConnection": {
+						"databaseName": "master",
+						"poolName": "Built-in"
+					},
+					"resultLimit": 5000
+				},
+				"type": "SqlQuery"
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('workspaceName'), '/1_usp_silver_trip_data_green')]",
 			"type": "Microsoft.Synapse/workspaces/sqlscripts",
 			"apiVersion": "2019-06-01-preview",
@@ -2363,29 +2386,6 @@
 			},
 			"dependsOn": [],
 			"location": "eastus"
-		},
-		{
-			"name": "[concat(parameters('workspaceName'), '/1_synapse_link_query_heartbeat')]",
-			"type": "Microsoft.Synapse/workspaces/sqlscripts",
-			"apiVersion": "2019-06-01-preview",
-			"properties": {
-				"folder": {
-					"name": "nyc_taxi/synapse_link"
-				},
-				"content": {
-					"query": "IF (NOT EXISTS(SELECT * FROM sys.credentials WHERE name = 'melchi-cosmosdb'))\n    CREATE CREDENTIAL [melchi-cosmosdb]\n    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = '4NdNnrRvS9W9SHT4UVVgPEwjm8nIYKFSA5kSdbgckr221y3m8Z2vy51UfCyjM9lZE353iKW27FKsACDbGTJRsQ=='\nGO\n\nSELECT TOP 100 *\nFROM OPENROWSET(​PROVIDER = 'CosmosDB',\n                CONNECTION = 'Account=melchi-cosmosdb;Database=nyctxidb',\n                OBJECT = 'Heartbeat',\n                SERVER_CREDENTIAL = 'melchi-cosmosdb'\n) AS [Heartbeat]\n",
-					"metadata": {
-						"language": "sql"
-					},
-					"currentConnection": {
-						"databaseName": "master",
-						"poolName": "Built-in"
-					},
-					"resultLimit": 5000
-				},
-				"type": "SqlQuery"
-			},
-			"dependsOn": []
 		}
 	]
 }
